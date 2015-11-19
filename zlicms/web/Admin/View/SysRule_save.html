@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$title}</title>
+<link href="__TMPL__/css/base.css" rel="stylesheet" type="text/css">
+<script src="__TMPL__/js/jquery.js"></script>
+<script src="__TMPL__/js/effect.js"></script>
+</head>
+
+<body>
+<include file="Index/nav" />
+<div class="main">
+    <div class="info">
+        <div class="tit">{$title}</div>
+        <p>提示：禁止重复添加</p>
+    </div>
+    <div class="arcAdd mT10">
+        <form name="arcform" action="{:U('runSave',array('edit'=>I('edit')))}" method="post">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="50">名称：</td>
+                    <td><input type="text" name="title" value="{$v['title']}" class="w200" /></td>
+                </tr>
+                <tr class="bg">
+                    <td>上级：</td>
+                    <td><select name="fid" id="tid">
+                            
+                        {$select_rule}
+                    
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>排序：</td>
+                    <td><input type="text" name="sort" value="{$v['sort'] ? $v['sort'] : 0}" class="w100" /></td>
+                </tr>
+                <tr class="bg">
+                    <td>url：</td>
+                    <td><input type="text" name="name" value="{$v['name']}" class="w400" /></td>
+                </tr>
+                <tr class="btn">
+                    <td colspan="2" style="padding:10px;"  class="tL"><input type="submit" class="coolbg" value=" 确定 " name="submit" >
+                        <input type='button' class="coolbg" value=" 返回 " onclick="history.go(-1)"  ></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<div class="header"> <a href="{:U('Index/index')}" class="logo fL"></a><a href="{:U('Index/index')}" class="fL">ZLICMS管理控制台</a>
+    <div class="user"> {:session('admin.username')}    |  <a href="{:U('login/logout')}">退出</a></div>
+</div>
+<div class="nav">
+	<foreach name='menu' item='m'>                    
+        <h3><em></em>{$m['title']}</h3>
+        <ul {:is_select($m['id'],1)}>
+            <foreach name='m["son"]' item='s'>                    
+            <li {:is_select($s['id'])}><a href="{:U($s['name'])}">{$s['title']}</a></li>
+            </foreach>
+        </ul>
+    </foreach>    
+</div>
+<script type="text/javascript">
+	var ary = location.href.split("&");
+	jQuery(".nav").slide({titCell:"h3", targetCell:"ul",defaultIndex:1,effect:"slideDown",delayTime:300,trigger:"click",defaultPlay:false});
+</script>

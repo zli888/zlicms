@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$title}</title>
+<link href="__TMPL__/css/base.css" rel="stylesheet" type="text/css">
+<script src="__TMPL__/js/jquery.js"></script>
+<script src="__TMPL__/js/effect.js"></script>
+</head>
+
+<body>
+<include file="Index/nav" />
+<div class="main">
+    <div class="info">
+        <div class="tit">{$title}</div>
+        <p>提示：禁止重复添加</p>
+    </div>
+    <div class="arcAdd mT10">
+        <form name="arcform" action="{:U('runSave',array('edit'=>I('edit')))}" method="post">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="70">名称：</td>
+                    <td><input type="text" name="typename" value="{$v['name']}" class="w200" /></td>
+                </tr>
+                <tr class="bg">
+                    <td>上级：</td>
+                    <td><select name="fid" id="tid">
+                            
+                            
+                        {$selectType}
+                    
+                        
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>SEO标题：</td>
+                    <td><input type="text" name="seotitle" value="{$v['seotitle']}" class="w400" /></td>
+                </tr>
+                <tr class="bg">
+                    <td>关键字：</td>
+                    <td><input type="text" name="keywords" value="{$v['keywords']}" class="w400" /></td>
+                </tr>
+                <tr>
+                    <td>描述：</td>
+                    <td><textarea name="description" cols="100" rows="3">{$v['description']}</textarea></td>
+                </tr>
+                <tr>
+                    <td>封面模版：</td>
+                    <td><input type="text" name="tpl_type" value="{:$v['tpl_type'] ? $v['tpl_type'] : 'type.html'}" class="w400" /></td>
+                </tr>
+                <tr>
+                    <td>列表模版：</td>
+                    <td><input type="text" name="tpl_list" value="{:$v['tpl_list'] ? $v['tpl_list'] : 'list.html'}" class="w400" /></td>
+                </tr>
+                <tr>
+                    <td>文档模版：</td>
+                    <td><input type="text" name="tpl_arc" value="{:$v['tpl_arc'] ? $v['tpl_arc'] : 'arc.html'}" class="w400" /></td>
+                </tr>
+                <tr class="btn">
+                    <td colspan="2" style="padding:10px;"  class="tL"><input type="submit" class="coolbg" value=" 确定 " name="submit" >
+                        <input type='button' class="coolbg" value=" 返回 " onclick="history.go(-1)"  ></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

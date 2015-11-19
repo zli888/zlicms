@@ -1,0 +1,54 @@
+<?php
+    if(C('LAYOUT_ON')) {
+        echo '{__NOLAYOUT__}';
+    }
+?>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
+<title>系统发生错误</title>
+<style>
+html, body, div, dl, dt, dd, p { margin: 0; padding: 0; font-family: arial, "Hiragino Sans GB", "Microsoft Yahei", sans-serif; color: #333; font-size: 14px; }
+.main { width: 300px; height: 300px; margin: 200px auto; }
+.main dt { font-size: 18px; text-align: center; background: #f1f1f1; border: 1px solid #ccc; font-weight: bold; line-height: 40px; border-radius: 10px 10px 0 0 }
+.main dd { padding: 10px 0 10px 20px; border: 1px solid #ccc; border-top: 0 }
+.main p { padding: 30px 0 30px 100px; background-position: left center; background-repeat: no-repeat; background-size: 80px; font-size: 14px; }
+.main .error { background-image: url(/tpl/prompt/error.png); }
+</style>
+</head>
+
+<body>
+<div class="main">
+    <dl>
+        <dt>系统发生错误</dt>
+        <dd>
+            <p class="error"><?php echo strip_tags($e['message']);?></p>
+        </dd>
+    </dl>
+</div>
+<div class="content">
+    <?php if(isset($e['file'])) {?>
+    <div class="info">
+        <div class="title">
+            <h3>错误位置</h3>
+        </div>
+        <div class="text">
+            <p>FILE: <?php echo $e['file'] ;?> &#12288;LINE: <?php echo $e['line'];?></p>
+        </div>
+    </div>
+    <?php }?>
+    <?php if(isset($e['trace'])) {?>
+    <div class="info">
+        <div class="title">
+            <h3>TRACE</h3>
+        </div>
+        <div class="text">
+            <p><?php echo nl2br($e['trace']);?></p>
+        </div>
+    </div>
+    <?php }?>
+</div>
+</body>
+</html>
